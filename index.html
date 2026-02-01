@@ -243,7 +243,18 @@
 
         .about-image {
             text-align: center;
-            font-size: 10rem;
+        }
+
+        .about-image img {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 15px 30px rgba(30, 60, 114, 0.2));
+            transition: transform 0.3s;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
         }
 
         /* قسم التواصل */
@@ -349,7 +360,7 @@
             .nav-links { display: none; }
             .hero h1 { font-size: 2rem; }
             .about-content { grid-template-columns: 1fr; }
-            .about-image { font-size: 5rem; }
+            .about-image img { max-width: 250px; }
             .logo img { height: 40px; }
             .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; left: 20px; }
         }
@@ -437,7 +448,9 @@
                         <li>حلول مخصصة حسب احتياجات كل عميل</li>
                     </ul>
                 </div>
-                <div class="about-image">🛡️</div>
+                <div class="about-image">
+                    <img src="logo.png" alt="SHEILD">
+                </div>
             </div>
         </div>
     </section>
