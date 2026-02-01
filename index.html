@@ -172,11 +172,31 @@
             text-align: center;
             transition: all 0.3s;
             border-top: 4px solid #2a5298;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-top-color: #ff6b35;
+        }
+
+        .service-card::after {
+            content: "اضغط للتفاصيل";
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #ff6b35;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
         }
 
         .service-icon {
@@ -193,6 +213,142 @@
         .service-card p {
             color: #666;
             line-height: 1.8;
+        }
+
+        /* Modal/Popup styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #f0f0f0;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: #dc3545;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #f0f0f0;
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            color: #1e3c72;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .modal-body {
+            color: #555;
+            line-height: 1.9;
+        }
+
+        .modal-body h4 {
+            color: #1e3c72;
+            margin: 1.5rem 0 0.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-body ul {
+            margin-right: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-right: 1rem;
+        }
+
+        .modal-body li::before {
+            content: "•";
+            color: #ff6b35;
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+
+        .modal-cta {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .modal-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 60, 114, 0.4);
         }
 
         /* مكتبة السلامة */
@@ -603,6 +759,8 @@
             .request-grid { grid-template-columns: 1fr; }
             .tools-grid { grid-template-columns: 1fr; }
             .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; left: 20px; }
+            .modal-content { width: 95%; padding: 1.5rem; }
+            .modal-title { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -642,32 +800,32 @@
         <div class="container">
             <h2 class="section-title">خدمات السلامة</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('training')">
                     <div class="service-icon">👨‍🏫</div>
                     <h3>التدريب والتوعية</h3>
                     <p>برامج تدريبية معتمدة للعمال والإداريين في مجال السلامة المهنية والوقاية من المخاطر</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('audit')">
                     <div class="service-icon">🔍</div>
                     <h3>التفتيش والمراجعة</h3>
                     <p>فحص شامل لمواقع العمل وتحديد المخاطر وتقييم المخاطر الصناعية بشكل دوري</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('consult')">
                     <div class="service-icon">📋</div>
                     <h3>الاستشارات الفنية</h3>
                     <p>استشارات متخصصة في وضع خطط الطوارئ والإخلاء وإجراءات السلامة</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('security')">
                     <div class="service-icon">🛠️</div>
                     <h3>الأمن الصناعي</h3>
                     <p>توريد وتركيب معدات الحماية الشخصية وأنظمة الإنذار والإطفاء</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('risk')">
                     <div class="service-icon">📊</div>
                     <h3>إدارة المخاطر</h3>
                     <p>تحليل المخاطر وإعداد دراسات السلامة البيئية والصحية للمشاريع</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" onclick="openModal('legal')">
                     <div class="service-icon">⚖️</div>
                     <h3>التوافق القانوني</h3>
                     <p>التأكد من التزام المنشآت بقوانين ومعايير السلامة المهنية المحلية والدولية</p>
@@ -675,6 +833,21 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal Popup -->
+    <div id="serviceModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">👨‍🏫</div>
+                <h3 class="modal-title" id="modalTitle">عنوان الخدمة</h3>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- المحتوى يتغير حسب الخدمة -->
+            </div>
+            <a href="#request" class="modal-cta" onclick="closeModal()">📞 اطلب الخدمة الآن</a>
+        </div>
+    </div>
 
     <!-- مكتبة السلامة -->
     <section class="library" id="library">
@@ -880,7 +1053,227 @@
     </footer>
 
     <script>
-        // تأثير التنقل السلس
+        // بيانات الخدمات التفصيلية
+        const servicesData = {
+            training: {
+                icon: '👨‍🏫',
+                title: 'التدريب والتوعية',
+                content: `
+                    <p><strong>نقدم برامج تدريبية شاملة ومعتمدة في مجال السلامة المهنية:</strong></p>
+                    
+                    <h4>📚 البرامج المتاحة:</h4>
+                    <ul>
+                        <li>OSHA المعايير الأمريكية للسلامة</li>
+                        <li>الإسعافات الأولية وإنعاش القلب والرئتين (CPR)</li>
+                        <li>الإخلاء وخطط الطوارئ</li>
+                        <li>التعامل مع الحرائق واستخدام الطفايات</li>
+                        <li>السلامة عند العمل على ارتفاعات</li>
+                        <li>الحبس المساحات المحصورة (Confined Space)</li>
+                    </ul>
+                    
+                    <h4>✨ مميزاتنا:</h4>
+                    <ul>
+                        <li>شهادات معتمدة من جهات دولية</li>
+                        <li>مدربون معتمدون ذوو خبرة عالية</li>
+                        <li>تدريب عملي على أرض الواقع</li>
+                        <li>متابعة بعد التدريب وتقييم الأداء</li>
+                    </ul>
+                `
+            },
+            audit: {
+                icon: '🔍',
+                title: 'التفتيش والمراجعة',
+                content: `
+                    <p><strong>نقدم خدمات التفتيش الشامل على مواقع العمل لضمان الالتزام بمعايير السلامة:</strong></p>
+                    
+                    <h4>🔎 نوعيات التفتيش:</h4>
+                    <ul>
+                        <li>التفتيش الدوري الشامل للمواقع</li>
+                        <li>فحص المعدات والآلات الصناعية</li>
+                        <li>تقييم أنظمة الإنذار والإطفاء</li>
+                        <li>مراجعة توفر معدات الوقاية الشخصية</li>
+                        <li>تفتيش السقالات والمعدات المرتفعة</li>
+                    </ul>
+                    
+                    <h4>📊 مخرجات التفتيش:</h4>
+                    <ul>
+                        <li>تقرير مفصل بالمخالفات والملاحظات</li>
+                        <li>خطة Corrective Actions للمعالجة</li>
+                        <li>تصنيف المخاطر حسب الأولوية</li>
+                        <li>توصيات لتحسين بيئة العمل</li>
+                    </ul>
+                `
+            },
+            consult: {
+                icon: '📋',
+                title: 'الاستشارات الفنية',
+                content: `
+                    <p><strong>استشارات متخصصة في مجال السلامة والصحة المهنية:</strong></p>
+                    
+                    <h4>📝 الخدمات الاستشارية:</h4>
+                    <ul>
+                        <li>إعداد خطط الطوارئ والإخلاء</li>
+                        <li>تصميم نظام إدارة السلامة (SMS)</li>
+                        <li>استشارات الـ ISO 45001</li>
+                        <li>دراسات Safety Case للمشاريع الكبرى</li>
+                        <li>تقييم الأثر البيئي (EIA)</li>
+                        <li>إعداد سياسات وإجراءات السلامة</li>
+                    </ul>
+                    
+                    <h4>🎯 المميزات:</h4>
+                    <ul>
+                        <li>استشاريون معتمدون دولياً</li>
+                        <li>حلول مخصصة حسب طبيعة النشاط</li>
+                        <li>دعم فني مستمر</li>
+                        <li>أحدث المعايير العالمية</li>
+                    </ul>
+                `
+            },
+            security: {
+                icon: '🛠️',
+                title: 'الأمن الصناعي',
+                content: `
+                    <p><strong>نوفر معدات وأنظمة الأمن الصناعي من أفضل المصادر العالمية:</strong></p>
+                    
+                    <h4>🦺 معدات الوقاية الشخصية (PPE):</h4>
+                    <ul>
+                        <li>خوذ واقية وأحذية سلامة</li>
+                        <li>قفازات ونظارات واقية</li>
+                        <li>بدلات واقية من الحرائق والمواد الكيميائية</li>
+                        <li>أحزمة الأمان والحبال</li>
+                    </ul>
+                    
+                    <h4>🚨 أنظمة الإنذار والإطفاء:</h4>
+                    <ul>
+                        <li>أنظمة إنذار الحرائق المتقدمة</li>
+                        <li>طفايات وأنظمة إطفاء حسب الطلب</li>
+                        <li>أنظمة إنذار الغازات السامة</li>
+                        <li>كاميرات مراقبة وأنظمة Access Control</li>
+                    </ul>
+                    
+                    <h4>✅ الخدمات الإضافية:</h4>
+                    <ul>
+                        <li>تركيب وصيانة الأنظمة</li>
+                        <li>تدريب العمال على الاستخدام</li>
+                        <li>عقود صيانة دورية</li>
+                    </ul>
+                `
+            },
+            risk: {
+                icon: '📊',
+                title: 'إدارة المخاطر',
+                content: `
+                    <p><strong>خدمات شاملة لإدارة وتقييم المخاطر في بيئة العمل:</strong></p>
+                    
+                    <h4>⚠️ خدمات التقييم:</h4>
+                    <ul>
+                        <li>تحليل المخاطر (Risk Assessment)</li>
+                        <li>دراسات JSA لأنواع العمل المختلفة</li>
+                        <li>تحديد المخاطر الكيميائية والبيولوجية</li>
+                        <li>تقييم المخاطر الميكانيكية والكهربائية</li>
+                        <li>دراسات Brahaz Analysis</li>
+                    </ul>
+                    
+                    <h4>📈 إدارة المخاطر:</h4>
+                    <ul>
+                        <li>وضع خطط التحكم في المخاطر</li>
+                        <li>هيكل توثيق المخاطر</li>
+                        <li>مؤشرات أداء السلامة (KPIs)</li>
+                        <li>نظام إدارة الحوادث والت investigations</li>
+                    </ul>
+                    
+                    <h4>🔄 المتابعة:</h4>
+                    <ul>
+                        <li>مراجعة دورية لفعالية التحكمات</li>
+                        <li>تحديث تقييم المخاطر باستمرار</li>
+                        <li>تقارير إحصائية دورية</li>
+                    </ul>
+                `
+            },
+            legal: {
+                icon: '⚖️',
+                title: 'التوافق القانوني',
+                content: `
+                    <p><strong>التأكد من التزام المنشأة بجميع المتطلبات القانونية والتنظيمية:</strong></p>
+                    
+                    <h4>📜 خدمات الالتزام:</h4>
+                    <ul>
+                        <li>مراجعة التوافق مع أنظمة وزارة الموارد البشرية</li>
+                        <li>الالتزام بمعايير الهيئة السعودية للمواصفات (SASO)</li>
+                        <li>متطلبات الدفاع المدني والدفاع عن النفس</li>
+                        <li>التوافق مع OSHA و NFPA (للشركات الدولية)</li>
+                        <li>إعداد السياسات الداخلية المطابقة</li>
+                    </ul>
+                    
+                    <h4>📋 التقارير:</h4>
+                    <ul>
+                        <li>تقرير فجوات الالتزام (Gap Analysis)</li>
+                        <li>خطة معالجة المخالفات القانونية</li>
+                        <li>متابعة التحديثات التشريعية</li>
+                        <li>تمثيل أمام الجهات الرقابية</li>
+                    </ul>
+                    
+                    <h4>🛡️ الحماية:</h4>
+                    <ul>
+                        <li>تجنب الغرامات والعقوبات</li>
+                        <li>حماية قانونية للمنشأة</li>
+                        <li>تأمين استمرارية العمل</li>
+                    </ul>
+                `
+            }
+        };
+
+        // فتح الـ Modal
+        function openModal(serviceKey) {
+            const modal = document.getElementById('serviceModal');
+            const service = servicesData[serviceKey];
+            
+            document.getElementById('modalIcon').textContent = service.icon;
+            document.getElementById('modalTitle').textContent = service.title;
+            document.getElementById('modalBody').innerHTML = service.content;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+        }
+
+        // إغلاق الـ Modal
+        function closeModal(event) {
+            if (!event || event.target.id === 'serviceModal' || event.target.className === 'modal-close') {
+                document.getElementById('serviceModal').classList.remove('active');
+                document.body.style.overflow = 'auto'; // إرجاع التمرير
+            }
+        }
+
+        // إغلاق بالـ ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // دليل معدات الوقاية
+        function showPPE() {
+            const select = document.getElementById('ppeSelect');
+            const result = document.getElementById('ppeResult');
+            const text = document.getElementById('ppeText');
+            
+            const ppeData = {
+                welder: "✓ خوذة لحام مع واقي وجه\n✓ قفازات لحام مقاومة للحرارة\n✓ جاكيت لحام\n✓ حذاء مقاوم للشرر\n✓ نظارات واقية من الأشعة فوق البنفسجية",
+                electrician: "✓ خوذة عازلة (Class E)\n✓ قفازات عازلة (Class 00)\n✓ نظارة واقية\n✓ أحذية عازلة (ملاطیس)\n✓ معطف عازل",
+                chemical: "✓ بدلة وقاية كيميائية كاملة\n✓ قناع تنفس مع فلتر كيميائي ( ABEK )\n✓ قفازات نتريل سميكة\n✓ نظارة واقية محكمة الإغلاق\n✓ حذاء مقاوم للمواد الكيميائية",
+                height: "✓ حزام أمان كامل مع ربط (Full Body Harness)\n✓ حبل الإيقاف (Lanyard)\n✓ خوذة صلبة مع قبعة البناء\n✓ حذاء مانع للانزلاق\n✓ قفازات جلد مقاومة للقطع",
+                construction: "✓ خوذة صلبة مع شريط عاكس\n✓ نظارة واقية شفافة\n✓ قناع/كمامة الغبار (N95)\n✓ قفازات جلد\n✓ حذاء صلب الإصبع (Steel Toe)\n✓ سترة عاكسة للضوء (Hi-Vis)"
+            };
+            
+            if (select.value) {
+                text.innerHTML = ppeData[select.value].replace(/\n/g, '<br>');
+                result.style.display = 'block';
+            } else {
+                result.style.display = 'none';
+            }
+        }
+
+        // Smooth scroll للروابط
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -893,28 +1286,6 @@
                 }
             });
         });
-
-        // دليل معدات الوقاية
-        function showPPE() {
-            const select = document.getElementById('ppeSelect');
-            const result = document.getElementById('ppeResult');
-            const text = document.getElementById('ppeText');
-            
-            const ppeData = {
-                welder: "خوذة لحام مع واقي وجه، قفازات لحام مقاومة للحرارة، جاكيت لحام، حذاء مقاوم للشرر",
-                electrician: "خوذة عازلة، قفازات عازلة (Class 00)، نظارة واقية، أحذية عازلة",
-                chemical: "بدلة وقاية كيميائية كاملة، قناع تنفس مع فلتر كيميائي، قفازات نتريل، نظارة واقية محكمة",
-                height: "حزام أمان كامل معربط، خوذة صلبة، حذاء مانع للانزلاق، قفازات جلد",
-                construction: "خوذة صلبة، نظارة واقية، قناع الغبار، قفازات جلد، حذاء صلب، سترة عاكسة"
-            };
-            
-            if (select.value) {
-                text.textContent = ppeData[select.value];
-                result.style.display = 'block';
-            } else {
-                result.style.display = 'none';
-            }
-        }
     </script>
 
 </body>
