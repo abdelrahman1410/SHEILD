@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- PWA Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2a5298">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SHEILD">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="logo.png">
+    
     <title>SHEILD - خدمات السلامة والأمن الصناعي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -749,6 +758,16 @@
             }
         }
 
+        /* PWA Standalone mode adjustments */
+        @media (display-mode: standalone) {
+            nav {
+                padding-top: env(safe-area-inset-top);
+            }
+            .hero {
+                margin-top: calc(70px + env(safe-area-inset-top));
+            }
+        }
+
         /* للموبايل */
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -1053,6 +1072,19 @@
     </footer>
 
     <script>
+        // تسجيل Service Worker للـ PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then((registration) => {
+                        console.log('✅ Service Worker مسجل:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('❌ فشل تسجيل Service Worker:', error);
+                    });
+            });
+        }
+
         // بيانات الخدمات التفصيلية
         const servicesData = {
             training: {
@@ -1233,14 +1265,14 @@
             document.getElementById('modalBody').innerHTML = service.content;
             
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+            document.body.style.overflow = 'hidden';
         }
 
         // إغلاق الـ Modal
         function closeModal(event) {
             if (!event || event.target.id === 'serviceModal' || event.target.className === 'modal-close') {
                 document.getElementById('serviceModal').classList.remove('active');
-                document.body.style.overflow = 'auto'; // إرجاع التمرير
+                document.body.style.overflow = 'auto';
             }
         }
 
