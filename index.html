@@ -195,6 +195,244 @@
             line-height: 1.8;
         }
 
+        /* مكتبة السلامة */
+        .library {
+            padding: 5rem 0;
+            background: #f0f7f0;
+        }
+
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .library-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 4px solid #28a745;
+        }
+
+        .library-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .library-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .library-card h3 {
+            color: #1e3c72;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .library-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        /* أدوات حساب المخاطر */
+        .tools {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid #fd7e14;
+        }
+
+        .tool-card h3 {
+            color: #1e3c72;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .risk-cell {
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: white;
+        }
+
+        .risk-green { background: #28a745; }
+        .risk-yellow { background: #ffc107; color: #333; }
+        .risk-orange { background: #fd7e14; }
+        .risk-red { background: #dc3545; }
+
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .ppe-selector {
+            margin-top: 1rem;
+        }
+
+        .ppe-selector select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ppe-result {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            border-right: 4px solid #28a745;
+        }
+
+        /* طلب خدمة */
+        .request {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6eeff 100%);
+        }
+
+        .request-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .request-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .quick-contact {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .quick-contact h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .whatsapp-big {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .whatsapp-big:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
         /* قسم من نحن */
         .about {
             padding: 5rem 0;
@@ -362,6 +600,8 @@
             .about-content { grid-template-columns: 1fr; }
             .about-image img { max-width: 250px; }
             .logo img { height: 40px; }
+            .request-grid { grid-template-columns: 1fr; }
+            .tools-grid { grid-template-columns: 1fr; }
             .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; left: 20px; }
         }
     </style>
@@ -378,8 +618,11 @@
                 <ul class="nav-links">
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#library">المكتبة</a></li>
+                    <li><a href="#tools">الأدوات</a></li>
+                    <li><a href="#request">طلب خدمة</a></li>
                     <li><a href="#about">من نحن</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#contact">تواصل</a></li>
                 </ul>
             </div>
         </div>
@@ -428,6 +671,147 @@
                     <div class="service-icon">⚖️</div>
                     <h3>التوافق القانوني</h3>
                     <p>التأكد من التزام المنشآت بقوانين ومعايير السلامة المهنية المحلية والدولية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- مكتبة السلامة -->
+    <section class="library" id="library">
+        <div class="container">
+            <h2 class="section-title">📚 مكتبة السلامة</h2>
+            <div class="library-grid">
+                <div class="library-card">
+                    <div class="library-icon">📄</div>
+                    <h3>نموذج PTW</h3>
+                    <p>تصريح العمل (Permit to Work) للأعمال الخطرة</p>
+                    <a href="#" class="download-btn">⬇️ تحميل PDF</a>
+                </div>
+                <div class="library-card">
+                    <div class="library-icon">✅</div>
+                    <h3>نموذج JSA</h3>
+                    <p>تحليل مخاطر العمل (Job Safety Analysis)</p>
+                    <a href="#" class="download-btn">⬇️ تحميل PDF</a>
+                </div>
+                <div class="library-card">
+                    <div class="library-icon">📋</div>
+                    <h3>قوائم الفحص</h3>
+                    <p>Checklists للمعدات والمواقع المختلفة</p>
+                    <a href="#" class="download-btn">⬇️ تحميل PDF</a>
+                </div>
+                <div class="library-card">
+                    <div class="library-icon">⚠️</div>
+                    <h3>تقييم المخاطر</h3>
+                    <p>نماذج تقييم المخاطر الشاملة</p>
+                    <a href="#" class="download-btn">⬇️ تحميل PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- أدوات حساب المخاطر -->
+    <section class="tools" id="tools">
+        <div class="container">
+            <h2 class="section-title">🧮 أدوات حساب المخاطر</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>مصفوفة تحليل المخاطر</h3>
+                    <p style="text-align: center; color: #666; margin-bottom: 1rem;">Risk Assessment Matrix</p>
+                    <div class="risk-matrix">
+                        <div class="risk-cell risk-green">منخفض</div>
+                        <div class="risk-cell risk-yellow">متوسط</div>
+                        <div class="risk-cell risk-orange">عالي</div>
+                        <div class="risk-cell risk-red">شديد</div>
+                        
+                        <div class="risk-cell risk-yellow">متوسط</div>
+                        <div class="risk-cell risk-yellow">متوسط</div>
+                        <div class="risk-cell risk-orange">عالي</div>
+                        <div class="risk-cell risk-red">شديد</div>
+                        
+                        <div class="risk-cell risk-orange">عالي</div>
+                        <div class="risk-cell risk-orange">عالي</div>
+                        <div class="risk-cell risk-red">شديد</div>
+                        <div class="risk-cell risk-red">شديد</div>
+                        
+                        <div class="risk-cell risk-red">شديد</div>
+                        <div class="risk-cell risk-red">شديد</div>
+                        <div class="risk-cell risk-red">شديد</div>
+                        <div class="risk-cell risk-red">شديد</div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>احتمالية ↓</span>
+                        <span>شدة الضرر →</span>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h3>🦺 دليل معدات الوقاية الشخصية</h3>
+                    <div class="ppe-selector">
+                        <select id="ppeSelect" onchange="showPPE()">
+                            <option value="">اختر المهنة...</option>
+                            <option value="welder">لحام (Welder)</option>
+                            <option value="electrician">كهربائي (Electrician)</option>
+                            <option value="chemical">تعامل مع مواد كيميائية</option>
+                            <option value="height">عمل على ارتفاعات</option>
+                            <option value="construction">عامل بناء</option>
+                        </select>
+                        <div id="ppeResult" class="ppe-result" style="display: none;">
+                            <strong>المعدات المطلوبة:</strong>
+                            <p id="ppeText" style="margin-top: 0.5rem; color: #333;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- طلب خدمة -->
+    <section class="request" id="request">
+        <div class="container">
+            <h2 class="section-title">📞 طلب خدمة</h2>
+            <div class="request-grid">
+                <div class="request-form">
+                    <form onsubmit="event.preventDefault(); alert('تم إرسال طلبك بنجاح! سنتواصل معك قريباً');">
+                        <div class="form-group">
+                            <label>الاسم الكامل *</label>
+                            <input type="text" required placeholder="أدخل اسمك">
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الجوال *</label>
+                            <input type="tel" required placeholder="05xxxxxxxx" style="direction: ltr;">
+                        </div>
+                        <div class="form-group">
+                            <label>نوع الخدمة *</label>
+                            <select required>
+                                <option value="">اختر الخدمة...</option>
+                                <option value="training">تدريب وتوعية</option>
+                                <option value="audit">تفتيش ومراجعة</option>
+                                <option value="consult">استشارات فنية</option>
+                                <option value="emergency">طوارئ وإخلاء</option>
+                                <option value="equipment">توريد معدات</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>تفاصيل الطلب</label>
+                            <textarea rows="4" placeholder="اكتب تفاصيل الطلب هنا..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">📩 إرسال الطلب</button>
+                    </form>
+                </div>
+                
+                <div class="quick-contact">
+                    <h3>أو تواصل معنا مباشرة</h3>
+                    <p style="color: #666; margin-bottom: 2rem;">للاستفسارات العاجلة والطلبات الفورية</p>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                        <h4 style="color: #1e3c72; margin-bottom: 0.5rem;">الهاتف / واتساب</h4>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: #25D366; direction: ltr;">+966 53 985 2062</p>
+                    </div>
+                    
+                    <a href="https://wa.me/966539852062" target="_blank" class="whatsapp-big">
+                        💬 تواصل سريع عبر واتساب
+                    </a>
                 </div>
             </div>
         </div>
@@ -509,6 +893,28 @@
                 }
             });
         });
+
+        // دليل معدات الوقاية
+        function showPPE() {
+            const select = document.getElementById('ppeSelect');
+            const result = document.getElementById('ppeResult');
+            const text = document.getElementById('ppeText');
+            
+            const ppeData = {
+                welder: "خوذة لحام مع واقي وجه، قفازات لحام مقاومة للحرارة، جاكيت لحام، حذاء مقاوم للشرر",
+                electrician: "خوذة عازلة، قفازات عازلة (Class 00)، نظارة واقية، أحذية عازلة",
+                chemical: "بدلة وقاية كيميائية كاملة، قناع تنفس مع فلتر كيميائي، قفازات نتريل، نظارة واقية محكمة",
+                height: "حزام أمان كامل معربط، خوذة صلبة، حذاء مانع للانزلاق، قفازات جلد",
+                construction: "خوذة صلبة، نظارة واقية، قناع الغبار، قفازات جلد، حذاء صلب، سترة عاكسة"
+            };
+            
+            if (select.value) {
+                text.textContent = ppeData[select.value];
+                result.style.display = 'block';
+            } else {
+                result.style.display = 'none';
+            }
+        }
     </script>
 
 </body>
