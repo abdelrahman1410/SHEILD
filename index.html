@@ -22,7 +22,7 @@
         /* التنقل العلوي */
         nav {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 1rem 0;
+            padding: 0.5rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -43,18 +43,19 @@
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            color: white;
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            text-decoration: none;
         }
 
-        .logo::before {
-            content: "🛡️";
-            font-size: 2.2rem;
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -79,7 +80,7 @@
 
         /* قسم البطل */
         .hero {
-            margin-top: 80px;
+            margin-top: 70px;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 6rem 0;
@@ -349,6 +350,7 @@
             .hero h1 { font-size: 2rem; }
             .about-content { grid-template-columns: 1fr; }
             .about-image { font-size: 5rem; }
+            .logo img { height: 40px; }
             .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; left: 20px; }
         }
     </style>
@@ -359,7 +361,9 @@
     <nav>
         <div class="container">
             <div class="nav-content">
-                <a href="#" class="logo">SHEILD</a>
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="SHEILD">
+                </a>
                 <ul class="nav-links">
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
