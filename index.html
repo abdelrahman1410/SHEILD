@@ -1,35 +1,465 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHEILD - خدمات السلامة والأمن الصناعي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* التنقل العلوي */
+        nav {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "🛡️";
+            font-size: 2.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* قسم البطل */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.6);
+            background: #ff5722;
+        }
+
+        /* قسم الخدمات */
+        .services {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff6b35;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 4px solid #2a5298;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* قسم من نحن */
+        .about {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #1e3c72;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .about-image {
+            text-align: center;
+            font-size: 10rem;
+        }
+
+        /* قسم التواصل */
+        .contact {
+            padding: 5rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            border-color: #2a5298;
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* الفوتر */
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* تأثيرات الحركة */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* للموبايل */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .about-image { font-size: 5rem; }
+            .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; left: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- التنقل -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">SHEILD</a>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>حماية وأمان لبيئة العمل</h1>
+            <p>نقدم حلول السلامة المهنية والأمن الصناعي المتكاملة لضمان بيئة عمل آمنة وصحية</p>
+            <a href="#services" class="cta-button">اكتشف خدماتنا</a>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">خدمات السلامة</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">👨‍🏫</div>
+                    <h3>التدريب والتوعية</h3>
+                    <p>برامج تدريبية معتمدة للعمال والإداريين في مجال السلامة المهنية والوقاية من المخاطر</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>التفتيش والمراجعة</h3>
+                    <p>فحص شامل لمواقع العمل وتحديد المخاطر وتقييم المخاطر الصناعية بشكل دوري</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>الاستشارات الفنية</h3>
+                    <p>استشارات متخصصة في وضع خطط الطوارئ والإخلاء وإجراءات السلامة</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>الأمن الصناعي</h3>
+                    <p>توريد وتركيب معدات الحماية الشخصية وأنظمة الإنذار والإطفاء</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>إدارة المخاطر</h3>
+                    <p>تحليل المخاطر وإعداد دراسات السلامة البيئية والصحية للمشاريع</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>التوافق القانوني</h3>
+                    <p>التأكد من التزام المنشآت بقوانين ومعايير السلامة المهنية المحلية والدولية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>نحن نحمي مستقبلك</h2>
+                    <p>شركة SHEILD هي شركة متخصصة في مجال السلامة والأمن الصناعي، نقدم خدمات شاملة تهدف إلى حماية الأرواح والممتلكات في بيئات العمل المختلفة.</p>
+                    <p>نملك فريقاً من الخبراء والاستشاريين المعتمدين دولياً، ونسعى جاهدين لتحقيق أعلى معايير السلامة والجودة في كل مشروع نتولاه.</p>
+                    <ul class="features-list">
+                        <li>خبرة أكثر من 10 سنوات في مجال السلامة</li>
+                        <li>فريق معتمد دولياً</li>
+                        <li>خدمات على مدار 24 ساعة</li>
+                        <li>حلول مخصصة حسب احتياجات كل عميل</li>
+                    </ul>
+                </div>
+                <div class="about-image">🛡️</div>
+            </div>
+        </div>
+    </section>
+
     <!-- قسم التواصل -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">تواصل معنا</h2>
             <div class="contact-grid">
-                <div class="contact-card">
+                <div class="contact-card" style="border-top: 4px solid #dc3545;">
                     <div class="contact-icon">📍</div>
                     <h3>الموقع</h3>
-                    <p>مكة المكرمة، المملكة العربية السعودية</p>
+                    <p>مكة المكرمة<br>المملكة العربية السعودية</p>
                 </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📞</div>
-                    <h3>الهاتف / الواتساب</h3>
-                    <p style="direction: ltr; text-align: center;">0539852062+</p>
-                    <a href="https://wa.me/966539852062" target="_blank" style="
-                        display: inline-block;
-                        background: #25D366;
-                        color: white;
-                        padding: 0.5rem 1.5rem;
-                        border-radius: 25px;
-                        text-decoration: none;
-                        margin-top: 1rem;
-                        font-weight: bold;
-                        transition: all 0.3s;
-                    ">💬 تواصل واتساب</a>
+                <div class="contact-card" style="border-top: 4px solid #25D366;">
+                    <div class="contact-icon">📱</div>
+                    <h3>الهاتف / واتساب</h3>
+                    <p style="direction: ltr; font-family: monospace; font-size: 1.1rem;">+966 53 985 2062</p>
+                    <a href="https://wa.me/966539852062" target="_blank" class="whatsapp-btn">💬 راسلنا الآن</a>
                 </div>
-                <div class="contact-card">
+                <div class="contact-card" style="border-top: 4px solid #ffc107;">
                     <div class="contact-icon">✉️</div>
                     <h3>البريد الإلكتروني</h3>
                     <p>info@sheild-safety.com</p>
                 </div>
-                <div class="contact-card">
+                <div class="contact-card" style="border-top: 4px solid #17a2b8;">
                     <div class="contact-icon">🕐</div>
                     <h3>ساعات العمل</h3>
                     <p>الأحد - الخميس<br>8 ص - 6 م</p>
@@ -37,23 +467,32 @@
             </div>
             
             <!-- زرار الواتساب العائم -->
-            <a href="https://wa.me/966539852062" target="_blank" style="
-                position: fixed;
-                bottom: 30px;
-                left: 30px;
-                background: #25D366;
-                color: white;
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 2rem;
-                text-decoration: none;
-                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-                z-index: 1000;
-                transition: all 0.3s;
-            " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</a>
+            <a href="https://wa.me/966539852062" target="_blank" class="floating-whatsapp" title="تواصل معنا عبر واتساب">💬</a>
         </div>
     </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <p>© 2025 SHEILD Safety Services. جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        // تأثير التنقل السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
