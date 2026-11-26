@@ -10,9 +10,34 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SHEILD">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="logo.png">
-    
-    <title>SHEILD - خدمات السلامة والأمن الصناعي</title>
+    <link rel="apple-touch-icon" href="logo-192.png">
+    <link rel="icon" type="image/png" href="logo-192.png">
+
+    <title>SHEILD - خدمات السلامة والأمن الصناعي | مكة المكرمة</title>
+    <meta name="description" content="SHEILD لخدمات السلامة والأمن الصناعي في مكة المكرمة: تدريب السلامة المهنية، التفتيش والمراجعة، خطط الطوارئ والإخلاء، توريد معدات الوقاية وأنظمة الإنذار والإطفاء، والتوافق مع متطلبات الدفاع المدني.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    <meta property="og:site_name" content="SHEILD">
+    <meta property="og:title" content="SHEILD - خدمات السلامة والأمن الصناعي | مكة المكرمة">
+    <meta property="og:description" content="افحص جاهزية منشأتك للسلامة مجاناً واطلب خدمتك مباشرة عبر واتساب.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "SHEILD Safety Services",
+        "alternateName": "SHEILD - خدمات السلامة والأمن الصناعي",
+        "description": "خدمات السلامة المهنية والأمن الصناعي: تدريب، تفتيش، استشارات، خطط طوارئ، معدات وقاية وأنظمة إنذار وإطفاء.",
+        "telephone": "+966539852062",
+        "email": "info@sheild-safety.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "مكة المكرمة",
+            "addressCountry": "SA"
+        },
+        "areaServed": "SA",
+        "openingHours": "Su-Th 08:00-18:00"
+    }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -46,6 +71,7 @@
         }
 
         .nav-content {
+            min-height: 54px; /* + حشوة 1rem = 70px تطابق بداية قسم البطل */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -421,6 +447,225 @@
             transform: scale(1.05);
         }
 
+        button.download-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* أقسام الصفحة لا تختفي تحت شريط التنقل الثابت */
+        section {
+            scroll-margin-top: 70px;
+        }
+
+        /* زر القائمة للموبايل */
+        .menu-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        /* أزرار البطل */
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.15);
+            box-shadow: none;
+        }
+
+        /* فحص جاهزية المنشأة */
+        .check {
+            padding: 5rem 0;
+            background: #fff8f3;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            max-width: 700px;
+            margin: -1.5rem auto 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .check-card {
+            background: white;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid #ff6b35;
+        }
+
+        .check-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .check-hint {
+            color: #1e3c72;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .check-list {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .check-item label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.8rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .check-item input {
+            width: 20px;
+            height: 20px;
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+            accent-color: #28a745;
+        }
+
+        .check-item label:has(input:checked) {
+            border-color: #28a745;
+            background: #f0f9f2;
+        }
+
+        .check-btn {
+            margin-top: 1.5rem;
+            background: #ff6b35;
+        }
+
+        .check-btn:hover {
+            background: #ff5722;
+        }
+
+        .check-result {
+            scroll-margin-top: 85px;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: #f8f9fa;
+            border-right: 6px solid #28a745;
+        }
+
+        .check-result h3 {
+            color: #1e3c72;
+            font-size: 1.4rem;
+        }
+
+        .score-bar {
+            height: 14px;
+            background: #e9ecef;
+            border-radius: 7px;
+            overflow: hidden;
+            margin: 0.8rem 0 1.2rem;
+        }
+
+        .score-fill {
+            height: 100%;
+            width: 0;
+            transition: width 0.6s ease;
+        }
+
+        .gap-list {
+            list-style: none;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .gap-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .gap-list li small {
+            display: block;
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 1rem;
+        }
+
+        .wa-action {
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .wa-action:hover {
+            background: #128C7E;
+        }
+
+        /* رسائل نموذج الطلب */
+        .field-error {
+            display: none;
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .form-group input.invalid,
+        .form-group select.invalid {
+            border-color: #dc3545;
+        }
+
+        .form-success {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 12px;
+            background: #eafaf0;
+            border-right: 5px solid #25D366;
+            color: #1e5631;
+        }
+
+        .form-success a {
+            color: #128C7E;
+            font-weight: 700;
+        }
+
         /* أدوات حساب المخاطر */
         .tools {
             padding: 5rem 0;
@@ -448,20 +693,67 @@
             text-align: center;
         }
 
+        .risk-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .risk-controls label {
+            display: block;
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .risk-controls select {
+            width: 100%;
+            padding: 0.7rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            background: white;
+        }
+
         .risk-matrix {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.35rem;
             margin-top: 1rem;
         }
 
         .risk-cell {
-            padding: 1rem;
+            padding: 0.6rem 0;
             border-radius: 8px;
             text-align: center;
             font-weight: bold;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: white;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .risk-cell.selected {
+            border-color: #1e3c72;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .risk-result {
+            margin-top: 1.2rem;
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-right: 5px solid #28a745;
+        }
+
+        .risk-result strong {
+            font-size: 1.15rem;
         }
 
         .risk-green { background: #28a745; }
@@ -768,9 +1060,35 @@
             }
         }
 
+        /* للتابلت: تقليل المسافات حتى تتسع كل الروابط */
+        @media (max-width: 1100px) {
+            .nav-links { gap: 0.25rem; }
+            .nav-links a { padding: 0.5rem 0.6rem; font-size: 0.95rem; }
+        }
+
         /* للموبايل */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                padding: 0.5rem 1rem 1rem;
+                background: #1e3c72;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { display: block; padding: 0.75rem 1rem; }
+            .container { padding: 0 1rem; }
+            .hero { padding: 4rem 0; }
+            .hero p { font-size: 1.1rem; }
+            .section-title { font-size: 1.9rem; }
+            .check-card, .request-form { padding: 1.5rem; }
+            .check-meta, .risk-controls { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2rem; }
             .about-content { grid-template-columns: 1fr; }
             .about-image img { max-width: 250px; }
@@ -789,12 +1107,14 @@
     <nav>
         <div class="container">
             <div class="nav-content">
-                <a href="#" class="logo">
-                    <img src="logo.png" alt="SHEILD">
+                <a href="#home" class="logo">
+                    <img src="logo-192.png" alt="SHEILD">
                 </a>
-                <ul class="nav-links">
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="القائمة" aria-expanded="false" aria-controls="navLinks">☰</button>
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#check">افحص منشأتك</a></li>
                     <li><a href="#library">المكتبة</a></li>
                     <li><a href="#tools">الأدوات</a></li>
                     <li><a href="#request">طلب خدمة</a></li>
@@ -810,7 +1130,10 @@
         <div class="container">
             <h1>حماية وأمان لبيئة العمل</h1>
             <p>نقدم حلول السلامة المهنية والأمن الصناعي المتكاملة لضمان بيئة عمل آمنة وصحية</p>
-            <a href="#services" class="cta-button">اكتشف خدماتنا</a>
+            <div class="hero-actions">
+                <a href="#check" class="cta-button">✅ افحص جاهزية منشأتك مجاناً</a>
+                <a href="#services" class="cta-button secondary">اكتشف خدماتنا</a>
+            </div>
         </div>
     </section>
 
@@ -853,6 +1176,54 @@
         </div>
     </section>
 
+    <!-- فحص جاهزية المنشأة -->
+    <section class="check" id="check">
+        <div class="container">
+            <h2 class="section-title">✅ افحص جاهزية منشأتك للسلامة</h2>
+            <p class="section-subtitle">دقيقتان فقط: حدّد ما هو متوفر لديك، واحصل فوراً على نسبة جاهزيتك وقائمة بالنواقص التي قد تعرّض منشأتك للمخالفات أو الحوادث.</p>
+            <div class="check-card">
+                <form id="checkForm" novalidate>
+                    <div class="check-meta">
+                        <div class="form-group">
+                            <label for="facilityType">نوع المنشأة</label>
+                            <select id="facilityType">
+                                <option value="">اختر...</option>
+                                <option>مصنع / ورشة</option>
+                                <option>مستودع</option>
+                                <option>موقع إنشاءات</option>
+                                <option>منشأة تجارية / مكاتب</option>
+                                <option>فندق / سكن</option>
+                                <option>منشأة تعليمية أو صحية</option>
+                                <option>أخرى</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeCount">عدد العاملين</label>
+                            <select id="employeeCount">
+                                <option value="">اختر...</option>
+                                <option>أقل من 10</option>
+                                <option>10 - 49</option>
+                                <option>50 - 249</option>
+                                <option>250 فأكثر</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="check-hint">حدّد كل ما هو متوفر في منشأتك حالياً:</p>
+                    <ul class="check-list" id="checkList"></ul>
+                    <button type="submit" class="submit-btn check-btn">📊 احسب نسبة الجاهزية</button>
+                </form>
+                <div class="check-result" id="checkResult" hidden>
+                    <h3 id="checkScoreTitle"></h3>
+                    <div class="score-bar"><div class="score-fill" id="checkScoreFill"></div></div>
+                    <p id="checkSummary"></p>
+                    <div id="checkGaps"></div>
+                    <button type="button" class="wa-action" id="checkSendBtn">💬 أرسل النتيجة لمستشار SHEILD عبر واتساب</button>
+                    <p class="disclaimer">هذه النتيجة استرشادية لمساعدتك على ترتيب الأولويات، ولا تُغني عن زيارة تفتيش ميدانية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Modal Popup -->
     <div id="serviceModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -877,25 +1248,25 @@
                     <div class="library-icon">📄</div>
                     <h3>نموذج PTW</h3>
                     <p>تصريح العمل (Permit to Work) للأعمال الخطرة</p>
-                    <a href="#" class="download-btn">⬇️ تحميل PDF</a>
+                    <button type="button" class="download-btn" data-template="نموذج تصريح العمل PTW">📩 اطلب النموذج عبر واتساب</button>
                 </div>
                 <div class="library-card">
                     <div class="library-icon">✅</div>
                     <h3>نموذج JSA</h3>
                     <p>تحليل مخاطر العمل (Job Safety Analysis)</p>
-                    <a href="#" class="download-btn">⬇️ تحميل PDF</a>
+                    <button type="button" class="download-btn" data-template="نموذج تحليل مخاطر العمل JSA">📩 اطلب النموذج عبر واتساب</button>
                 </div>
                 <div class="library-card">
                     <div class="library-icon">📋</div>
                     <h3>قوائم الفحص</h3>
                     <p>Checklists للمعدات والمواقع المختلفة</p>
-                    <a href="#" class="download-btn">⬇️ تحميل PDF</a>
+                    <button type="button" class="download-btn" data-template="قوائم الفحص Checklists">📩 اطلب النموذج عبر واتساب</button>
                 </div>
                 <div class="library-card">
                     <div class="library-icon">⚠️</div>
                     <h3>تقييم المخاطر</h3>
                     <p>نماذج تقييم المخاطر الشاملة</p>
-                    <a href="#" class="download-btn">⬇️ تحميل PDF</a>
+                    <button type="button" class="download-btn" data-template="نماذج تقييم المخاطر">📩 اطلب النموذج عبر واتساب</button>
                 </div>
             </div>
         </div>
@@ -908,32 +1279,35 @@
             <div class="tools-grid">
                 <div class="tool-card">
                     <h3>مصفوفة تحليل المخاطر</h3>
-                    <p style="text-align: center; color: #666; margin-bottom: 1rem;">Risk Assessment Matrix</p>
-                    <div class="risk-matrix">
-                        <div class="risk-cell risk-green">منخفض</div>
-                        <div class="risk-cell risk-yellow">متوسط</div>
-                        <div class="risk-cell risk-orange">عالي</div>
-                        <div class="risk-cell risk-red">شديد</div>
-                        
-                        <div class="risk-cell risk-yellow">متوسط</div>
-                        <div class="risk-cell risk-yellow">متوسط</div>
-                        <div class="risk-cell risk-orange">عالي</div>
-                        <div class="risk-cell risk-red">شديد</div>
-                        
-                        <div class="risk-cell risk-orange">عالي</div>
-                        <div class="risk-cell risk-orange">عالي</div>
-                        <div class="risk-cell risk-red">شديد</div>
-                        <div class="risk-cell risk-red">شديد</div>
-                        
-                        <div class="risk-cell risk-red">شديد</div>
-                        <div class="risk-cell risk-red">شديد</div>
-                        <div class="risk-cell risk-red">شديد</div>
-                        <div class="risk-cell risk-red">شديد</div>
+                    <p style="text-align: center; color: #666; margin-bottom: 1rem;">Risk Assessment Matrix — اختر القيم أو اضغط على أي خانة</p>
+                    <div class="risk-controls">
+                        <div>
+                            <label for="riskLikelihood">الاحتمالية</label>
+                            <select id="riskLikelihood">
+                                <option value="1">1 - نادر جداً</option>
+                                <option value="2">2 - غير محتمل</option>
+                                <option value="3" selected>3 - ممكن</option>
+                                <option value="4">4 - محتمل</option>
+                                <option value="5">5 - شبه مؤكد</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="riskSeverity">شدة الضرر</label>
+                            <select id="riskSeverity">
+                                <option value="1">1 - طفيف</option>
+                                <option value="2">2 - بسيط</option>
+                                <option value="3" selected>3 - متوسط</option>
+                                <option value="4">4 - جسيم</option>
+                                <option value="5">5 - كارثي</option>
+                            </select>
+                        </div>
                     </div>
+                    <div class="risk-matrix" id="riskMatrix" role="grid" aria-label="مصفوفة المخاطر 5×5"></div>
                     <div class="risk-labels">
-                        <span>احتمالية ↓</span>
-                        <span>شدة الضرر →</span>
+                        <span>↑ الاحتمالية</span>
+                        <span>شدة الضرر ←</span>
                     </div>
+                    <div class="risk-result" id="riskResult" aria-live="polite"></div>
                 </div>
                 
                 <div class="tool-card">
@@ -963,32 +1337,50 @@
             <h2 class="section-title">📞 طلب خدمة</h2>
             <div class="request-grid">
                 <div class="request-form">
-                    <form onsubmit="event.preventDefault(); alert('تم إرسال طلبك بنجاح! سنتواصل معك قريباً');">
+                    <form id="requestForm" novalidate>
                         <div class="form-group">
-                            <label>الاسم الكامل *</label>
-                            <input type="text" required placeholder="أدخل اسمك">
+                            <label for="reqName">الاسم الكامل *</label>
+                            <input type="text" id="reqName" required placeholder="أدخل اسمك" autocomplete="name">
+                            <div class="field-error" id="reqNameError">من فضلك اكتب اسمك</div>
                         </div>
                         <div class="form-group">
-                            <label>رقم الجوال *</label>
-                            <input type="tel" required placeholder="05xxxxxxxx" style="direction: ltr;">
+                            <label for="reqPhone">رقم الجوال *</label>
+                            <input type="tel" id="reqPhone" required placeholder="05xxxxxxxx" style="direction: ltr;" autocomplete="tel" inputmode="tel">
+                            <div class="field-error" id="reqPhoneError">من فضلك اكتب رقم جوال صحيح (مثال: 0512345678)</div>
                         </div>
                         <div class="form-group">
-                            <label>نوع الخدمة *</label>
-                            <select required>
+                            <label for="reqCompany">اسم المنشأة / الشركة</label>
+                            <input type="text" id="reqCompany" placeholder="اختياري" autocomplete="organization">
+                        </div>
+                        <div class="form-group">
+                            <label for="reqCity">المدينة</label>
+                            <input type="text" id="reqCity" value="مكة المكرمة">
+                        </div>
+                        <div class="form-group">
+                            <label for="reqService">نوع الخدمة *</label>
+                            <select id="reqService" required>
                                 <option value="">اختر الخدمة...</option>
                                 <option value="training">تدريب وتوعية</option>
                                 <option value="audit">تفتيش ومراجعة</option>
                                 <option value="consult">استشارات فنية</option>
-                                <option value="emergency">طوارئ وإخلاء</option>
-                                <option value="equipment">توريد معدات</option>
+                                <option value="emergency">خطط طوارئ وإخلاء</option>
+                                <option value="equipment">توريد وتركيب معدات وأنظمة إنذار وإطفاء</option>
+                                <option value="risk">إدارة وتقييم المخاطر</option>
+                                <option value="legal">التوافق القانوني ومتطلبات الدفاع المدني</option>
+                                <option value="other">أخرى</option>
                             </select>
+                            <div class="field-error" id="reqServiceError">من فضلك اختر نوع الخدمة</div>
                         </div>
                         <div class="form-group">
-                            <label>تفاصيل الطلب</label>
-                            <textarea rows="4" placeholder="اكتب تفاصيل الطلب هنا..."></textarea>
+                            <label for="reqDetails">تفاصيل الطلب</label>
+                            <textarea id="reqDetails" rows="4" placeholder="اكتب تفاصيل الطلب هنا..."></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">📩 إرسال الطلب</button>
+                        <button type="submit" class="submit-btn">💬 إرسال الطلب عبر واتساب</button>
                     </form>
+                    <div class="form-success" id="requestSuccess" hidden>
+                        ✅ تم تجهيز طلبك في واتساب — اضغط <strong>إرسال</strong> داخل واتساب لإتمامه.<br>
+                        لم يفتح واتساب؟ <a id="requestWaLink" href="https://wa.me/966539852062" target="_blank" rel="noopener">اضغط هنا</a>
+                    </div>
                 </div>
                 
                 <div class="quick-contact">
@@ -1025,7 +1417,7 @@
                     </ul>
                 </div>
                 <div class="about-image">
-                    <img src="logo.png" alt="SHEILD">
+                    <img src="logo-512.png" alt="SHEILD" loading="lazy" width="350" height="350">
                 </div>
             </div>
         </div>
@@ -1060,14 +1452,14 @@
             </div>
             
             <!-- زرار الواتساب العائم -->
-            <a href="https://wa.me/966539852062" target="_blank" class="floating-whatsapp" title="تواصل معنا عبر واتساب">💬</a>
+            <a href="https://wa.me/966539852062?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20SHEILD" target="_blank" rel="noopener" class="floating-whatsapp" title="تواصل معنا عبر واتساب" aria-label="تواصل معنا عبر واتساب">💬</a>
         </div>
     </section>
 
     <!-- الفوتر -->
     <footer>
         <div class="container">
-            <p>© 2025 SHEILD Safety Services. جميع الحقوق محفوظة</p>
+            <p>© <span id="year">2026</span> SHEILD Safety Services. جميع الحقوق محفوظة</p>
         </div>
     </footer>
 
@@ -1100,7 +1492,7 @@
                         <li>الإخلاء وخطط الطوارئ</li>
                         <li>التعامل مع الحرائق واستخدام الطفايات</li>
                         <li>السلامة عند العمل على ارتفاعات</li>
-                        <li>الحبس المساحات المحصورة (Confined Space)</li>
+                        <li>العمل في الأماكن المحصورة (Confined Space)</li>
                     </ul>
                     
                     <h4>✨ مميزاتنا:</h4>
@@ -1203,7 +1595,7 @@
                         <li>دراسات JSA لأنواع العمل المختلفة</li>
                         <li>تحديد المخاطر الكيميائية والبيولوجية</li>
                         <li>تقييم المخاطر الميكانيكية والكهربائية</li>
-                        <li>دراسات Brahaz Analysis</li>
+                        <li>دراسات HAZOP لتحليل مخاطر العمليات</li>
                     </ul>
                     
                     <h4>📈 إدارة المخاطر:</h4>
@@ -1211,7 +1603,7 @@
                         <li>وضع خطط التحكم في المخاطر</li>
                         <li>هيكل توثيق المخاطر</li>
                         <li>مؤشرات أداء السلامة (KPIs)</li>
-                        <li>نظام إدارة الحوادث والت investigations</li>
+                        <li>نظام إدارة الحوادث والتحقيق فيها</li>
                     </ul>
                     
                     <h4>🔄 المتابعة:</h4>
@@ -1232,7 +1624,7 @@
                     <ul>
                         <li>مراجعة التوافق مع أنظمة وزارة الموارد البشرية</li>
                         <li>الالتزام بمعايير الهيئة السعودية للمواصفات (SASO)</li>
-                        <li>متطلبات الدفاع المدني والدفاع عن النفس</li>
+                        <li>متطلبات الدفاع المدني (الوقاية من الحريق والإخلاء)</li>
                         <li>التوافق مع OSHA و NFPA (للشركات الدولية)</li>
                         <li>إعداد السياسات الداخلية المطابقة</li>
                     </ul>
@@ -1291,7 +1683,7 @@
             
             const ppeData = {
                 welder: "✓ خوذة لحام مع واقي وجه\n✓ قفازات لحام مقاومة للحرارة\n✓ جاكيت لحام\n✓ حذاء مقاوم للشرر\n✓ نظارات واقية من الأشعة فوق البنفسجية",
-                electrician: "✓ خوذة عازلة (Class E)\n✓ قفازات عازلة (Class 00)\n✓ نظارة واقية\n✓ أحذية عازلة (ملاطیس)\n✓ معطف عازل",
+                electrician: "✓ خوذة عازلة (Class E)\n✓ قفازات عازلة (Class 00)\n✓ نظارة واقية\n✓ أحذية عازلة للكهرباء\n✓ معطف عازل",
                 chemical: "✓ بدلة وقاية كيميائية كاملة\n✓ قناع تنفس مع فلتر كيميائي ( ABEK )\n✓ قفازات نتريل سميكة\n✓ نظارة واقية محكمة الإغلاق\n✓ حذاء مقاوم للمواد الكيميائية",
                 height: "✓ حزام أمان كامل مع ربط (Full Body Harness)\n✓ حبل الإيقاف (Lanyard)\n✓ خوذة صلبة مع قبعة البناء\n✓ حذاء مانع للانزلاق\n✓ قفازات جلد مقاومة للقطع",
                 construction: "✓ خوذة صلبة مع شريط عاكس\n✓ نظارة واقية شفافة\n✓ قناع/كمامة الغبار (N95)\n✓ قفازات جلد\n✓ حذاء صلب الإصبع (Steel Toe)\n✓ سترة عاكسة للضوء (Hi-Vis)"
@@ -1308,8 +1700,10 @@
         // Smooth scroll للروابط
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.length < 2) return;
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -1318,6 +1712,265 @@
                 }
             });
         });
+
+        // ================= واتساب: كل طلب يصل مباشرة لرقم الشركة =================
+        const WHATSAPP_NUMBER = '966539852062';
+
+        function whatsappUrl(message) {
+            return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+        }
+
+        function openWhatsApp(message) {
+            const url = whatsappUrl(message);
+            const win = window.open(url, '_blank');
+            if (win) {
+                win.opener = null;
+            } else {
+                window.location.href = url; // لو المتصفح منع النافذة الجديدة
+            }
+            return url;
+        }
+
+        // تحويل الأرقام العربية/الفارسية إلى إنجليزية وتنظيف الرقم
+        function normalizePhone(raw) {
+            const digits = String(raw)
+                .replace(/[٠-٩]/g, c => String(c.charCodeAt(0) - 0x0660))
+                .replace(/[۰-۹]/g, c => String(c.charCodeAt(0) - 0x06F0))
+                .replace(/\D/g, '');
+            // جوال سعودي بأي صيغة: 05xxxxxxxx / 5xxxxxxxx / 9665xxxxxxxx / 009665xxxxxxxx
+            const saudi = digits.replace(/^00/, '').replace(/^966/, '').replace(/^0/, '');
+            if (/^5\d{8}$/.test(saudi)) return '0' + saudi;
+            // أي رقم آخر (أرضي أو دولي) نقبله كما هو حتى لا نخسر العميل
+            if (digits.length >= 9 && digits.length <= 15) return digits;
+            return null;
+        }
+
+        // ================= القائمة في الموبايل =================
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        function setMenu(open) {
+            navLinks.classList.toggle('open', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.textContent = open ? '✕' : '☰';
+        }
+        menuToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+        // ================= نموذج طلب الخدمة =================
+        const requestForm = document.getElementById('requestForm');
+
+        function setFieldError(input, errorId, hasError) {
+            input.classList.toggle('invalid', hasError);
+            document.getElementById(errorId).style.display = hasError ? 'block' : 'none';
+        }
+
+        requestForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nameEl = document.getElementById('reqName');
+            const phoneEl = document.getElementById('reqPhone');
+            const serviceEl = document.getElementById('reqService');
+
+            const name = nameEl.value.trim();
+            const phone = normalizePhone(phoneEl.value);
+            const serviceOk = serviceEl.value !== '';
+
+            setFieldError(nameEl, 'reqNameError', !name);
+            setFieldError(phoneEl, 'reqPhoneError', !phone);
+            setFieldError(serviceEl, 'reqServiceError', !serviceOk);
+
+            if (!name) { nameEl.focus(); return; }
+            if (!phone) { phoneEl.focus(); return; }
+            if (!serviceOk) { serviceEl.focus(); return; }
+
+            const company = document.getElementById('reqCompany').value.trim();
+            const city = document.getElementById('reqCity').value.trim();
+            const details = document.getElementById('reqDetails').value.trim();
+
+            const lines = [
+                '*طلب خدمة جديد — موقع SHEILD*',
+                'الاسم: ' + name,
+                'الجوال: ' + phone
+            ];
+            if (company) lines.push('المنشأة: ' + company);
+            if (city) lines.push('المدينة: ' + city);
+            lines.push('الخدمة: ' + serviceEl.options[serviceEl.selectedIndex].text);
+            if (details) lines.push('التفاصيل: ' + details);
+
+            const url = openWhatsApp(lines.join('\n'));
+            document.getElementById('requestWaLink').href = url;
+            document.getElementById('requestSuccess').hidden = false;
+        });
+
+        // إخفاء رسالة الخطأ بمجرد أن يبدأ العميل التصحيح
+        [['reqName', 'reqNameError'], ['reqPhone', 'reqPhoneError'], ['reqService', 'reqServiceError']].forEach(([id, err]) => {
+            const el = document.getElementById(id);
+            el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => setFieldError(el, err, false));
+        });
+
+        // ================= مكتبة السلامة: طلب النماذج =================
+        document.querySelectorAll('.download-btn[data-template]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                openWhatsApp('السلام عليكم، أرغب في الحصول على: ' + btn.dataset.template + ' (من مكتبة السلامة في موقع SHEILD)');
+            });
+        });
+
+        // ================= فحص جاهزية المنشأة =================
+        const checkItems = [
+            { text: 'شهادة/ترخيص السلامة من الدفاع المدني سارية المفعول', service: 'legal' },
+            { text: 'طفايات الحريق متوفرة ومفحوصة دورياً وعليها بطاقة صيانة سارية', service: 'security' },
+            { text: 'نظام إنذار الحريق يعمل ويتم اختباره بشكل دوري', service: 'security' },
+            { text: 'خطة طوارئ وإخلاء مكتوبة، وتم تنفيذ تمرين إخلاء خلال آخر 12 شهراً', service: 'consult' },
+            { text: 'مخارج الطوارئ واضحة ومضاءة وغير مغلقة أو مسدودة', service: 'audit' },
+            { text: 'موظفون مدرّبون على الإسعافات الأولية مع حقيبة إسعافات مجهزة', service: 'training' },
+            { text: 'معدات الوقاية الشخصية متوفرة ومناسبة لطبيعة كل عمل', service: 'security' },
+            { text: 'تقييم مخاطر مكتوب ومحدّث للأنشطة الخطرة', service: 'risk' },
+            { text: 'سجل لتوثيق الحوادث والإصابات والتحقيق في أسبابها', service: 'risk' },
+            { text: 'تدريب سلامة للعاملين عند التعيين وبشكل دوري', service: 'training' },
+            { text: 'مسؤول سلامة معيّن داخل المنشأة', service: 'consult' }
+        ];
+
+        const checkList = document.getElementById('checkList');
+        checkItems.forEach((item, i) => {
+            const li = document.createElement('li');
+            li.className = 'check-item';
+            const label = document.createElement('label');
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.id = 'chk' + i;
+            label.htmlFor = input.id;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(item.text));
+            li.appendChild(label);
+            checkList.appendChild(li);
+        });
+
+        let lastCheckMessage = '';
+
+        document.getElementById('checkForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const gaps = checkItems.filter((item, i) => !document.getElementById('chk' + i).checked);
+            const score = Math.round(((checkItems.length - gaps.length) / checkItems.length) * 100);
+
+            let level, color, summary;
+            if (score >= 85) {
+                level = 'جاهزية جيدة';
+                color = '#28a745';
+                summary = 'منشأتك في وضع جيد. المراجعة الدورية تحافظ على هذا المستوى وتكشف أي ثغرات جديدة مبكراً.';
+            } else if (score >= 60) {
+                level = 'تحتاج إلى تحسين';
+                color = '#fd7e14';
+                summary = 'يوجد نواقص قد تعرّض المنشأة لمخالفات أو حوادث. معالجتها الآن أقل تكلفة بكثير من التعامل مع نتائجها لاحقاً.';
+            } else {
+                level = 'مخاطر عالية';
+                color = '#dc3545';
+                summary = 'منشأتك معرّضة لمخاطر ومخالفات واضحة. ننصح بزيارة تفتيش ووضع خطة معالجة بأسرع وقت.';
+            }
+
+            document.getElementById('checkScoreTitle').textContent = 'نسبة الجاهزية: ' + score + '% — ' + level;
+            const fill = document.getElementById('checkScoreFill');
+            fill.style.background = color;
+            document.getElementById('checkResult').style.borderRightColor = color;
+            document.getElementById('checkSummary').textContent = summary;
+
+            const gapsBox = document.getElementById('checkGaps');
+            gapsBox.innerHTML = '';
+            if (gaps.length) {
+                const title = document.createElement('strong');
+                title.textContent = 'النواقص التي تحتاج معالجة (' + gaps.length + '):';
+                const ul = document.createElement('ul');
+                ul.className = 'gap-list';
+                gaps.forEach(g => {
+                    const li = document.createElement('li');
+                    li.textContent = '⚠️ ' + g.text;
+                    const small = document.createElement('small');
+                    small.textContent = 'الخدمة المقترحة: ' + servicesData[g.service].title;
+                    li.appendChild(small);
+                    ul.appendChild(li);
+                });
+                gapsBox.appendChild(title);
+                gapsBox.appendChild(ul);
+            }
+
+            const facility = document.getElementById('facilityType').value;
+            const employees = document.getElementById('employeeCount').value;
+            const lines = ['*نتيجة فحص جاهزية السلامة — موقع SHEILD*'];
+            if (facility) lines.push('نوع المنشأة: ' + facility);
+            if (employees) lines.push('عدد العاملين: ' + employees);
+            lines.push('نسبة الجاهزية: ' + score + '% (' + level + ')');
+            if (gaps.length) {
+                lines.push('النواقص:');
+                gaps.forEach(g => lines.push('- ' + g.text));
+                lines.push('أرغب في استشارة لمعالجة هذه النواقص.');
+            } else {
+                lines.push('أرغب في مراجعة دورية للحفاظ على جاهزية المنشأة.');
+            }
+            lastCheckMessage = lines.join('\n');
+
+            const result = document.getElementById('checkResult');
+            result.hidden = false;
+            fill.style.width = '0';
+            requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.width = score + '%'; }));
+            result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        document.getElementById('checkSendBtn').addEventListener('click', () => {
+            if (lastCheckMessage) openWhatsApp(lastCheckMessage);
+        });
+
+        // ================= حاسبة مصفوفة المخاطر 5×5 =================
+        const riskLikelihood = document.getElementById('riskLikelihood');
+        const riskSeverity = document.getElementById('riskSeverity');
+        const riskMatrix = document.getElementById('riskMatrix');
+
+        function riskLevel(score) {
+            if (score <= 4) return { name: 'منخفض', cls: 'risk-green', color: '#28a745', action: 'مقبول: استمر في الضوابط الحالية والمراقبة الدورية.' };
+            if (score <= 9) return { name: 'متوسط', cls: 'risk-yellow', color: '#ffc107', action: 'يتطلب ضوابط إضافية خلال فترة زمنية محددة ومتابعة من المشرف.' };
+            if (score <= 16) return { name: 'عالي', cls: 'risk-orange', color: '#fd7e14', action: 'يتطلب إجراءات تحكم فورية وموافقة الإدارة قبل بدء العمل أو استمراره.' };
+            return { name: 'شديد', cls: 'risk-red', color: '#dc3545', action: 'غير مقبول: أوقف العمل فوراً حتى يتم خفض الخطر.' };
+        }
+
+        // الصفوف: الاحتمالية من 5 (أعلى) إلى 1 — الأعمدة: الشدة من 1 إلى 5
+        for (let l = 5; l >= 1; l--) {
+            for (let s = 1; s <= 5; s++) {
+                const cell = document.createElement('div');
+                cell.className = 'risk-cell ' + riskLevel(l * s).cls;
+                cell.textContent = l * s;
+                cell.dataset.l = l;
+                cell.dataset.s = s;
+                cell.title = 'الاحتمالية ' + l + ' × الشدة ' + s;
+                cell.addEventListener('click', () => {
+                    riskLikelihood.value = String(l);
+                    riskSeverity.value = String(s);
+                    updateRisk();
+                });
+                riskMatrix.appendChild(cell);
+            }
+        }
+
+        function updateRisk() {
+            const l = Number(riskLikelihood.value);
+            const s = Number(riskSeverity.value);
+            const score = l * s;
+            const level = riskLevel(score);
+            riskMatrix.querySelectorAll('.risk-cell').forEach(c => {
+                c.classList.toggle('selected', Number(c.dataset.l) === l && Number(c.dataset.s) === s);
+            });
+            const box = document.getElementById('riskResult');
+            box.style.borderRightColor = level.color;
+            box.innerHTML = '';
+            const strong = document.createElement('strong');
+            strong.textContent = 'درجة الخطر: ' + score + ' — ' + level.name;
+            const p = document.createElement('p');
+            p.textContent = level.action;
+            box.appendChild(strong);
+            box.appendChild(p);
+        }
+
+        riskLikelihood.addEventListener('change', updateRisk);
+        riskSeverity.addEventListener('change', updateRisk);
+        updateRisk();
+
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
 </body>
